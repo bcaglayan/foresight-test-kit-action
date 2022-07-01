@@ -66,6 +66,8 @@ async function run(): Promise<void> {
                     testFramework,
                     testFormat
                 )
+                console.log(command)
+                logger.error(command)
                 await runCli.runCommand(command)
             } catch (error) {
                 logger.error("Test results couldn't retrieved!")
