@@ -66,7 +66,7 @@ async function run(): Promise<void> {
                     testFramework,
                     testFormat
                 )
-                console.log(command)
+                console.log(command, 'aq')
                 logger.error(command)
                 await runCli.runCommand('thundra-foresight-cli upload-test -V')
             } catch (error) {
