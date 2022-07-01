@@ -54,9 +54,7 @@ async function run(): Promise<void> {
         logger.info(
             `FORESIGHT_WORKFLOW_JOB_NAME: ${process.env.FORESIGHT_WORKFLOW_JOB_NAME}`
         )
-        await runCli.runCommand(
-            await utils.installationCommandOfCli(cliVersion)
-        )
+        await runCli.runCommand(utils.installationCommandOfCli(cliVersion))
         if (testFramework && testPath.length > 0) {
             try {
                 const command = await runCli.generateCliCommand(
@@ -67,8 +65,8 @@ async function run(): Promise<void> {
                     testFormat
                 )
                 console.log(command, 'aq')
-                logger.error(command)
-                await runCli.runCommand('thundra-foresight-cli upload-test -V')
+                // logger.error(command)
+                await runCli.runCommand(command)
             } catch (error) {
                 logger.error("Test results couldn't retrieved!")
                 if (error instanceof Error) core.setFailed(error.message)

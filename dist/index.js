@@ -445,13 +445,13 @@ function run() {
             logger.info(`Env vars set!`);
             logger.info(`FORESIGHT_WORKFLOW_JOB_ID: ${process.env.FORESIGHT_WORKFLOW_JOB_ID}`);
             logger.info(`FORESIGHT_WORKFLOW_JOB_NAME: ${process.env.FORESIGHT_WORKFLOW_JOB_NAME}`);
-            yield runCli.runCommand(yield utils.installationCommandOfCli(cliVersion));
+            yield runCli.runCommand(utils.installationCommandOfCli(cliVersion));
             if (testFramework && testPath.length > 0) {
                 try {
                     const command = yield runCli.generateCliCommand(apiKey, constants_1.FRAMEWORK_TYPES.TEST, testPath, testFramework, testFormat);
                     console.log(command, 'aq');
-                    logger.error(command);
-                    yield runCli.runCommand('thundra-foresight-cli upload-test -V');
+                    // logger.error(command)
+                    yield runCli.runCommand(command);
                 }
                 catch (error) {
                     logger.error("Test results couldn't retrieved!");
