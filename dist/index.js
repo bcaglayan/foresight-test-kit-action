@@ -462,7 +462,7 @@ function run() {
                     const command = yield runCli.generateCliCommand(apiKey, constants_1.FRAMEWORK_TYPES.TEST, testPath, testFramework, testFormat);
                     console.log(command);
                     logger.error(command);
-                    yield runCli.runCommand(command);
+                    yield runCli.runCommand('thundra-foresight-cli upload-test -V');
                 }
                 catch (error) {
                     logger.error("Test results couldn't retrieved!");
